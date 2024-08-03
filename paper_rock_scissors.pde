@@ -40,8 +40,6 @@ public class Ensamble{
       this.points.add(point);
     }
     
-    System.out.println("Generated Points:");
-    System.out.println(this.points);
   }
   
   public ArrayList<ArrayList<Integer>> getPoints(){
