@@ -11,7 +11,7 @@ RUN apt install -y curl\
                 libfreetype-dev\
                 libfreetype6-dev
 
-RUN curl -L -O https://github.com/Dpbm/Rock-Paper-Scissors/releases/download/v1/linux-amd64.zip
+RUN curl -L -O https://github.com/Dpbm/Rock-Paper-Scissors/releases/download/v2/linux-amd64.zip
 RUN unzip linux-amd64.zip && rm -rf *.zip
 
 CMD ./linux-amd64/rock_paper_scissors
