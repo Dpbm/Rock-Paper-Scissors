@@ -30,4 +30,10 @@ docker run -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 
 ```
 
+also, remember to add the `xhost` permission:
+
+```bash
+xhost +local:docker
+```
+
 Note that you may have `X` installed in your host machine, and this setup for volume (`-v`) and display environment (`-e`) may change from distro-distro. These commands probably won't work on windows, so check the `X` setup if you wanna try.
