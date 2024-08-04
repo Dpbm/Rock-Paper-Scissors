@@ -189,13 +189,17 @@ ArrayList<Integer> deepcopy(ArrayList<Integer> list){
 void checkCollision(){
   //rock with scissors
   ArrayList<ArrayList<Integer>> newRocks = new ArrayList<ArrayList<Integer>>();
+  ArrayList<Integer> scissorsIndex = new ArrayList<Integer>();
   
   for(ArrayList<Integer> rockPoint : rock.points.getPoints()){
+      Integer i = 0;
       for(ArrayList<Integer> scissorsPoint : scissors.points.getPoints()){
         double d = Math.sqrt(Math.pow(rockPoint.get(0) - scissorsPoint.get(0),2) + Math.pow(rockPoint.get(1) - scissorsPoint.get(1),2));
-        if(d <= 20)
-          newRocks.add(scissorsPoint);
-        
+        if(d <= 20 && !scissorsIndex.contains(i)){
+           newRocks.add(scissorsPoint);
+           scissorsIndex.add(i);
+        }
+        i++;
       }
   }
   
@@ -206,13 +210,17 @@ void checkCollision(){
   
   //scissors with paper
   ArrayList<ArrayList<Integer>> newScissorsList = new ArrayList<ArrayList<Integer>>();
+  ArrayList<Integer> paperIndex = new ArrayList<Integer>();
   
   for(ArrayList<Integer> scissorsPoint : scissors.points.getPoints()){
+      Integer i = 0;
       for(ArrayList<Integer> PaperPoint : paper.points.getPoints()){
         double d = Math.sqrt(Math.pow(scissorsPoint.get(0) - PaperPoint.get(0),2) + Math.pow(scissorsPoint.get(1) - PaperPoint.get(1),2));
-        if(d <= 20)
+        if(d <= 20 && !paperIndex.contains(i)){
           newScissorsList.add(PaperPoint);
-        
+          paperIndex.add(i);
+        }
+        i++;
       }
   }
   
@@ -224,13 +232,17 @@ void checkCollision(){
   
   //paper with rock
   ArrayList<ArrayList<Integer>> newPapers = new ArrayList<ArrayList<Integer>>();
+  ArrayList<Integer> rockIndex = new ArrayList<Integer>();
   
   for(ArrayList<Integer> paperPoint : paper.points.getPoints()){
+      Integer i = 0;
       for(ArrayList<Integer> rockPoint : rock.points.getPoints()){
         double d = Math.sqrt(Math.pow(paperPoint.get(0) - rockPoint.get(0),2) + Math.pow(paperPoint.get(1) - rockPoint.get(1),2));
-        if(d <= 20)
+        if(d <= 20 && !rockIndex.contains(i)){
           newPapers.add(rockPoint);
-        
+          rockIndex.add(i);
+        }        
+        i++;
       }
   }
   
