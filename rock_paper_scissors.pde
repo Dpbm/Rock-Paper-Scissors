@@ -125,8 +125,8 @@ public class Player{
   private PImage image;
   private Ensamble points;
   
-  public Player(String image, Ensamble points){
-    this.image = loadImage(image);
+  public Player(PImage image, Ensamble points){
+    this.image = image;
     this.points = points;
   }
   
@@ -155,9 +155,13 @@ Integer counter = 0;
 
 void setup(){
   size(800, 600);
-  rock  = new Player("assets/rock.png", new Ensamble(10, 10, 20, 100));
-  paper  = new Player("assets/paper.png", new Ensamble(500, 100, 20, 90));
-  scissors  = new Player("assets/scissors.png", new Ensamble(400, 400, 20, 100));
+  PImage rock_image = loadImage("assets/rock.png");
+  PImage paper_image = loadImage("assets/paper.png");
+  PImage scissors_image = loadImage("assets/scissors.png");
+  
+  rock  = new Player(rock_image, new Ensamble(10, 10, 20, 100));
+  paper  = new Player(paper_image, new Ensamble(500, 100, 20, 90));
+  scissors  = new Player(scissors_image, new Ensamble(400, 400, 20, 100));
   
 }
 
@@ -167,7 +171,7 @@ void draw(){
   paper.render();
   scissors.render();
   
-  if(counter%10 == 0){
+  if(counter%6 == 0){
     counter = 0;
     rock.updatePoints();
     paper.updatePoints();
